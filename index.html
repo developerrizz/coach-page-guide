@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ko" data-cat="coach">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="공지·과제부터 피드백, 운영팀 요청까지 코치 전용 페이지의 모든 사용법을 한눈에.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RIZZ 육성프로그램">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="코치 전용 페이지 사용 안내">
+<meta property="og:description" content="공지·과제부터 피드백, 운영팀 요청까지 코치 전용 페이지의 모든 사용법을 한눈에.">
+<meta property="og:url" content="https://developerrizz.github.io/coach-page-guide/">
+<meta property="og:image" content="https://developerrizz.github.io/coach-page-guide/og.jpg">
+<meta property="og:image:secure_url" content="https://developerrizz.github.io/coach-page-guide/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="코치프로그램 코치 전용 페이지 사용 안내 표지">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="코치 전용 페이지 사용 안내">
+<meta name="twitter:image" content="https://developerrizz.github.io/coach-page-guide/og.jpg">
+<title>RIZZ 육성프로그램 | 코치 전용 페이지 사용 안내</title>
+<style>@font-face{font-family:'Pretendard Variable';font-style:normal;font-display:swap;font-weight:45 920;src:url(PretendardVariable.woff2) format('woff2-variations')}
+
+/* 방향: 문서처럼 번호로 찾는 업무 매뉴얼. 색은 묶음 표시에만, 장식 대신 구조. */
+:root{
+  --accent:#18181B; --accent-soft:#F4F4F5; --accent-mid:#E4E4E7;
+  --ink:#18181B; --sub:#52525B; --muted:#71717A;
+  --line:#E4E4E7; --line-soft:#F0F0F2; --desk:#EEF0F3; --paper:#FFFFFF; --tint:#F7F7F8;
+  --warn:#9A4A06; --warn-soft:#FEF5E7; --warn-line:#F2D7A6;
+  --font:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --fs-xs:13px; --fs-sm:15px; --fs-md:16px; --fs-lg:19px; --fs-xl:24px; --fs-2xl:34px;
+  --s1:4px; --s2:8px; --s3:16px; --s4:24px; --s5:32px; --s6:48px; --s7:64px;
+  --r:6px; --measure:680px;
+}
+/* 묶음별로 바뀌는 건 머리글 띠 색(--band) 하나뿐 */
+[data-cat="internal"]{--band:#E6DDFB}
+[data-cat="coach"]{--band:#FBEDB0}
+[data-cat="cstudent"]{--band:#FADCE6}
+[data-cat="rstudent"]{--band:#CDEFE3}
+
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--desk);font-family:var(--font);color:var(--ink);font-size:var(--fs-md);line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;font-variant-numeric:tabular-nums}
+a{color:inherit;text-underline-offset:3px}
+::selection{background:var(--accent-soft);color:var(--ink)}
+input{caret-color:var(--accent)}
+html{scrollbar-color:#C4C4CC var(--desk)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code{font-family:inherit;font-size:.92em;background:var(--tint);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+
+/* 머리글 띠: 어느 묶음 문서인지 항상 보임 */
+.runhead{position:sticky;top:0;z-index:10;background:var(--band);color:var(--ink)}
+.runhead .in{max-width:1120px;margin:0 auto;padding:0 var(--s4);height:56px;display:flex;align-items:center;gap:var(--s3)}
+.runhead .org{font-size:var(--fs-xs);font-weight:600;white-space:nowrap}
+.runhead .bar{width:1px;height:16px;background:rgba(24,24,27,.2)}
+.runhead .doc-name{font-size:var(--fs-sm);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.search{position:relative;width:300px;flex:none}
+.search input{width:100%;height:36px;border:1px solid rgba(24,24,27,.08);border-radius:var(--r);padding:0 var(--s2) 0 34px;font:inherit;font-size:var(--fs-sm);background:#fff;color:var(--ink)}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.search svg{position:absolute;left:10px;top:9px;width:18px;height:18px;color:var(--muted)}
+.search kbd{position:absolute;right:8px;top:8px;font:inherit;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 6px;line-height:18px}
+.search input:focus + kbd,.search input:not(:placeholder-shown) + kbd{display:none}
+.res{max-width:1120px;margin:0 auto;padding:var(--s2) var(--s4) 0;font-size:var(--fs-xs);color:var(--sub)}
+.res:empty{display:none}
+
+/* 종이 */
+.paper{max-width:1120px;margin:var(--s4) auto var(--s6);background:var(--paper);border:1px solid var(--line);border-radius:8px}
+
+/* 표지: 제목 + 문서 정보표 */
+.cover{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s6);padding:var(--s6) var(--s6) var(--s5);border-bottom:1px solid var(--line)}
+.kind{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-sm);font-weight:700;color:var(--sub)}
+.kind::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--band);box-shadow:inset 0 0 0 1px rgba(24,24,27,.12)}
+h1{font-size:var(--fs-2xl);line-height:1.25;letter-spacing:-.025em;font-weight:800;margin:var(--s3) 0 var(--s2)}
+.purpose{font-size:var(--fs-lg);line-height:1.6;color:var(--sub);margin:0;max-width:34em}
+.docinfo{margin:0;border-top:2px solid var(--ink);font-size:var(--fs-sm)}
+.docinfo div{display:grid;grid-template-columns:84px minmax(0,1fr);border-bottom:1px solid var(--line);padding:10px 0}
+.docinfo dt{color:var(--muted)}
+.docinfo dd{margin:0;font-weight:600}
+.quick{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);padding:var(--s3) var(--s6);border-bottom:1px solid var(--line);background:var(--tint);border-radius:0}
+.quick span{font-size:var(--fs-xs);color:var(--sub);margin-right:var(--s2)}
+.quick a{font-size:var(--fs-sm);font-weight:600;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:6px 12px;transition:border-color .15s,color .15s}
+.quick a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* 본문 + 목차 */
+.body{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--s6);padding:var(--s6)}
+.toc{position:sticky;top:80px;align-self:start}
+.toc .t{font-size:var(--fs-xs);color:var(--muted);padding-bottom:var(--s2);border-bottom:1px solid var(--line);margin-bottom:var(--s2)}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:grid;grid-template-columns:24px minmax(0,1fr);gap:4px;text-decoration:none;color:var(--sub);font-size:var(--fs-sm);padding:6px 8px;border-radius:var(--r)}
+.toc a::before{content:counter(t);color:var(--muted);font-weight:600}
+.toc a:hover{background:var(--tint)}
+.toc a.on{color:var(--ink);font-weight:700;background:var(--accent-soft)}
+.toc a.on::before{color:var(--accent)}
+.content{min-width:0;max-width:760px;counter-reset:sec}
+
+/* 절 */
+.sec{counter-increment:sec;counter-reset:step fig tbl;padding:var(--s6) 0;border-top:1px solid var(--line);scroll-margin-top:80px}
+.sec:first-child{border-top:0;padding-top:0}
+h2{display:flex;align-items:baseline;gap:12px;font-size:var(--fs-xl);line-height:1.3;letter-spacing:-.015em;font-weight:800;margin:0 0 var(--s2)}
+h2::before{content:counter(sec);color:var(--accent);font-weight:800}
+.lead{color:var(--sub);margin:0 0 var(--s4);max-width:var(--measure)}
+h3{font-size:var(--fs-lg);line-height:1.45;margin:0;font-weight:700}
+p{margin:0 0 var(--s3)}
+
+/* 업무 일람표 (한눈에 보기) */
+.ovlist{border-top:2px solid var(--ink)}
+.ov{display:grid;grid-template-columns:180px minmax(0,1fr) 110px;gap:var(--s3);padding:var(--s3) 0;border-bottom:1px solid var(--line);align-items:baseline}
+.ov h3{font-size:var(--fs-md)}
+.ov h3 a{text-decoration:none}
+.ov h3 a:hover{color:var(--accent)}
+.ov p{margin:0;color:var(--sub);font-size:var(--fs-sm)}
+.ov .when{font-size:var(--fs-sm);font-weight:600;text-align:right}
+.ovhead{display:grid;grid-template-columns:180px minmax(0,1fr) 110px;gap:var(--s3);padding:var(--s2) 0;font-size:var(--fs-xs);color:var(--muted);border-bottom:1px solid var(--line)}
+.ovhead span:last-child{text-align:right}
+
+/* 단계: 2.1, 2.2 번호는 자동 */
+.steps{list-style:none;margin:0;padding:0}
+.step{counter-increment:step;display:grid;grid-template-columns:64px minmax(0,1fr);gap:var(--s3);padding:var(--s4) 0;border-bottom:1px dashed var(--line);scroll-margin-top:80px}
+.step:first-child{padding-top:var(--s2)}
+.step:last-child{border-bottom:0}
+.num{all:unset;cursor:pointer;align-self:start;font-weight:800;font-size:var(--fs-lg);line-height:1.45;color:var(--accent);border-radius:4px;padding:0 4px;margin-left:-4px;width:max-content}
+.num::before{content:counter(sec) "." counter(step)}
+.num:hover{background:var(--accent-soft)}
+.num:focus-visible{outline:2px solid var(--accent)}
+.who{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s1) 0 var(--s2)}
+.who span{font-size:var(--fs-xs);color:var(--sub);background:var(--tint);border:1px solid var(--line);border-radius:4px;padding:0 8px;line-height:22px}
+.step p{color:var(--sub);margin-bottom:var(--s2);max-width:var(--measure)}
+
+.check{list-style:none;padding:0;margin:var(--s2) 0 0;display:flex;flex-direction:column;gap:2px}
+.check li{position:relative;padding:2px 0 2px 28px;font-size:var(--fs-sm);cursor:pointer;user-select:none;border-radius:4px;transition:color .15s}
+.check li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border:1.5px solid #A1A1AA;border-radius:4px;background:#fff;transition:background-color .15s,border-color .15s}
+.check li:hover::before{border-color:var(--accent)}
+.check li.done{color:var(--muted);text-decoration:line-through}
+.check li.done::before{background:var(--ink);border-color:var(--ink)}
+.check li.done::after{content:"";position:absolute;left:5px;top:8px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+/* 알림 상자: 아이콘으로 구분 */
+.note{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;border-radius:var(--r);padding:12px 16px;font-size:var(--fs-sm);margin-top:var(--s3);max-width:var(--measure);border:1px solid transparent}
+.note i{width:20px;height:20px;margin-top:2px;background:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.note b{display:block}
+.note.tip{background:var(--accent-soft)}
+.note.tip i,.note.tip b{color:var(--accent)}
+.note.tip i{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z'/%3E%3C/svg%3E")}
+.note.warn{background:var(--warn-soft);border-color:var(--warn-line)}
+.note.warn i,.note.warn b{color:var(--warn)}
+.note.warn i{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 2 20h20L12 3z'/%3E%3Cpath d='M12 10v4M12 17.5v.5'/%3E%3C/svg%3E")}
+
+/* 그림: 번호 자동 */
+.fig{counter-increment:fig;margin:var(--s3) 0 0;max-width:560px}
+.fig img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:var(--r)}
+.fig .empty{aspect-ratio:16/9;border:1px solid var(--line);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:var(--fs-xs);background:var(--tint)}
+.fig figcaption{font-size:var(--fs-xs);color:var(--sub);margin-top:var(--s2)}
+.fig figcaption::before{content:"그림 " counter(sec) "-" counter(fig) ".";font-weight:700;color:var(--ink);margin-right:6px}
+
+/* 복사 상자 */
+.copybox{margin-top:var(--s3);max-width:var(--measure);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.copybox .hd{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);padding:6px 6px 6px 16px;background:var(--tint);border-bottom:1px solid var(--line);font-size:var(--fs-xs);color:var(--sub);font-weight:600}
+.copybox button{font:inherit;font-size:var(--fs-xs);font-weight:700;border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:0 12px;height:30px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,color .15s}
+.copybox button:hover{border-color:var(--accent);color:var(--accent)}
+.copybox button.ok{border-color:var(--ink);background:var(--ink);color:#fff}
+.copybox pre{margin:0;padding:var(--s3);white-space:pre-wrap;font-family:inherit;font-size:var(--fs-sm);line-height:1.75}
+
+/* 링크 */
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--s2)}
+.btn{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);padding:12px 16px;border-radius:var(--r);border:1px solid var(--line);font-size:var(--fs-sm);font-weight:700;text-decoration:none;min-height:48px;transition:border-color .15s,background-color .15s}
+.btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.btn .ext{font-weight:500;color:var(--muted);font-size:var(--fs-xs);white-space:nowrap}
+.btn.primary{border-color:#D4D4D8;background:var(--accent-soft);color:var(--ink)}
+.btn.primary .ext{color:var(--accent)}
+.btn:active,.quick a:active,.copybox button:active,.num:active{transform:translateY(1px)}
+
+/* 표: 번호 자동 */
+.tblwrap{counter-increment:tbl;overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--fs-sm);border-top:2px solid var(--ink)}
+.tbl caption{caption-side:top;text-align:left;font-size:var(--fs-xs);color:var(--sub);padding-bottom:var(--s2)}
+.tbl caption::before{content:"표 " counter(sec) "-" counter(tbl) ".";font-weight:700;color:var(--ink);margin-right:6px}
+.tbl th{text-align:left;font-weight:600;color:var(--muted);font-size:var(--fs-xs);padding:var(--s2) var(--s3) var(--s2) 0;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px var(--s3) 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td:first-child{font-weight:700}
+
+/* 자주 묻는 질문 */
+.faq{border-top:2px solid var(--ink);padding-top:var(--s2)}
+.faq details{border-bottom:1px solid var(--line);padding:2px 0}
+.faq summary{cursor:pointer;list-style:none;padding:10px 0 12px;font-weight:700;display:grid;grid-template-columns:28px minmax(0,1fr) 20px;gap:4px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";color:var(--accent);font-weight:800}
+.faq summary::after{content:"+";color:var(--muted);font-weight:400;font-size:20px;line-height:1.2;text-align:right}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--sub);padding:0 0 var(--s3) 32px;margin:0;max-width:var(--measure)}
+
+/* 개정 이력 */
+.history{font-size:var(--fs-xs);color:var(--sub)}
+.history .tbl{font-size:var(--fs-xs)}
+.history .tbl td:first-child{font-weight:600}
+
+.empty-res{display:none;padding:var(--s5) 0;color:var(--sub)}
+.searching .empty-res.show{display:block}
+.hide{display:none!important}
+.toast{position:fixed;left:50%;bottom:var(--s5);transform:translate(-50%,8px);background:var(--ink);color:#fff;font-size:var(--fs-sm);padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:20}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:760px){
+  .runhead{position:static}
+  .runhead .in{height:auto;flex-wrap:wrap;padding:var(--s2) var(--s3) var(--s3);gap:var(--s2)}
+  .runhead .org{width:100%}
+  .runhead .bar,.runhead .doc-name{display:none}
+  .search{width:100%}
+  .search kbd{display:none}
+  .paper{margin:0;border:0;border-radius:0}
+  .cover{grid-template-columns:minmax(0,1fr);gap:var(--s4);padding:var(--s4) var(--s3)}
+  h1{font-size:28px}
+  .purpose{font-size:var(--fs-md)}
+  .quick{padding:var(--s3)}
+  .body{grid-template-columns:minmax(0,1fr);padding:0 var(--s3) var(--s5);gap:0}
+  .toc{position:sticky;top:0;z-index:5;background:var(--paper);margin:0 calc(-1 * var(--s3));padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+  .toc::-webkit-scrollbar{display:none}
+  .toc .t{display:none}
+  .toc ol{display:flex;gap:var(--s1)}
+  .toc a{white-space:nowrap;display:flex;gap:6px}
+  .sec,.step{scroll-margin-top:60px}
+  .sec:first-child{padding-top:var(--s4)}
+  .ovhead{display:none}
+  .ov{grid-template-columns:minmax(0,1fr) auto;gap:2px var(--s3)}
+  .ov p{grid-column:1 / -1;grid-row:2}
+  .step{grid-template-columns:40px minmax(0,1fr);gap:var(--s2)}
+  .num{font-size:var(--fs-md);line-height:1.7}
+  .docinfo{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--ink)}
+  .docinfo div{display:block;padding:8px 0}
+  .docinfo dt{font-size:var(--fs-xs)}
+  .cover{gap:var(--s3)}
+  .quick{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .quick::-webkit-scrollbar{display:none}
+  .quick a{white-space:nowrap}
+  .quick span{white-space:nowrap}
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+  .tbl td{display:block;padding:2px 0;border:0}
+  .tbl td::before{content:attr(data-label);display:block;font-size:var(--fs-xs);color:var(--muted);font-weight:400}
+  .tbl td:first-child::before{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{.runhead,.quick,.toc{display:none}.body{grid-template-columns:minmax(0,1fr)}.paper{border:0;margin:0}body{background:#fff}}
+
+html{scroll-behavior:auto;overflow-anchor:none}body{font-size:var(--fs-md)}:root{--doc-header:56px}.page{display:none;scroll-margin-top:calc(var(--doc-header) + 24px)}.page.paper{max-width:1120px;margin:calc(var(--doc-header) + 24px) auto var(--s6);padding:0;min-height:0}.page:target{display:block}.intro{display:block;min-height:100svh;padding:calc(var(--doc-header) + 24px) var(--s4) var(--s6)}.page:target~.intro{display:none}.intro-inner.paper{margin:0 auto}.hero.cover{display:block;border-bottom:0}.hero h1{font-size:var(--fs-2xl);line-height:1.25;letter-spacing:-.025em;margin:var(--s3) 0 var(--s2)}.program-name{margin:0}.hero-copy{font-size:var(--fs-lg);line-height:1.6;color:var(--sub);margin:0;max-width:34em}.hero-actions{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s4)}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border:1px solid var(--line);border-radius:var(--r);padding:10px 16px;font-size:var(--fs-sm);font-weight:700;text-decoration:none;background:var(--paper);color:var(--ink);line-height:1.6}.button:hover{border-color:var(--ink);background:var(--accent-soft);text-decoration:none}.button.primary{border-color:#D4D4D8;background:var(--accent-soft);color:var(--ink)}.button.outline{background:var(--paper);color:var(--ink);border-color:var(--line)}.button.small{min-height:42px;padding:8px 13px;margin:0 0 var(--s4);font-size:var(--fs-sm)}.app-header.runhead{position:fixed;inset:0 0 auto 0;height:var(--doc-header);z-index:60}.app-header .header-inner{height:100%;max-width:1120px;margin:auto;display:flex;align-items:center;gap:var(--s3);padding:0 var(--s4)}.brand{display:inline-flex;flex-direction:column;align-items:flex-start;flex-shrink:0;color:var(--ink);line-height:1;text-decoration:none}.brand:hover{text-decoration:none}.brand-glow{font-size:8px;font-weight:600;letter-spacing:.02em;margin:0 0 3px 1px}.brand-rizz{font-size:24px;letter-spacing:-1.1px;font-weight:850}.muaclass-logo{display:block;object-fit:contain;width:68px;height:34px;flex-shrink:0;mix-blend-mode:multiply}.search-area{position:relative;width:300px;min-width:0;flex:none}.search-fallback,.search-input-box{display:flex;align-items:center;gap:8px;height:36px;min-width:0;border:1px solid rgba(24,24,27,.08);border-radius:var(--r);background:#fff;padding:0 10px;color:var(--muted);font-size:var(--fs-sm);text-decoration:none}.search-fallback:hover{text-decoration:none;border-color:var(--ink)}.search .search-icon{position:static;width:18px;height:18px;color:var(--muted);flex-shrink:0}.search-enhanced{display:none}.search-ready .search-enhanced{display:block}.search-ready .search-fallback{display:none}.search .search-input-box input{background:transparent;border:0;border-radius:0;padding:0;width:100%;min-width:0;height:34px;font:inherit;font-size:var(--fs-sm);color:var(--ink)}.search .search-input-box input:focus{outline:none}.search-input-box:focus-within{outline:2px solid var(--ink);outline-offset:1px}.search-clear{display:none;background:transparent;border:0;padding:0;font:inherit;font-size:12px;color:var(--muted);white-space:nowrap;cursor:pointer}.search-input-box.has-value .search-clear{display:block}.search-results{position:absolute;top:calc(100% + 8px);left:0;right:0;max-height:min(65svh,560px);overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:var(--s2);font-size:var(--fs-sm)}.search-results-label{font-size:var(--fs-xs);color:var(--muted);padding:3px 8px 7px;margin:0}.search-result{display:block;border-radius:4px;padding:10px;color:var(--ink);text-decoration:none;line-height:1.6}.search-result:hover,.search-result:focus{background:var(--accent-soft);text-decoration:none}.search-result b{display:block;font-size:var(--fs-md);font-weight:700}.search-result small{display:block;font-size:var(--fs-xs);color:var(--sub);margin-top:3px}.search-empty{padding:10px;font-size:var(--fs-sm);color:var(--sub)}.search-all{display:block;border-top:1px solid var(--line);margin-top:var(--s2);padding:10px 8px 2px;font-size:var(--fs-xs);font-weight:700}.page .page-head.cover{display:block;padding:var(--s6);gap:0}.page-head .breadcrumb{font-size:var(--fs-xs);font-weight:600;color:var(--muted);margin-bottom:var(--s2)}.page-head h1{margin:var(--s2) 0 var(--s2);font-size:var(--fs-2xl);font-weight:800;line-height:1.25;letter-spacing:-.025em}.page-head h1[data-doc-no]::before{content:attr(data-doc-no) ". ";font-weight:800}.page-lead{font-size:var(--fs-md);line-height:1.75;color:var(--sub);margin:0;max-width:var(--measure)}.page .body{padding:var(--s6);gap:var(--s6)}.page .content{max-width:760px;min-width:0}.page .toc{top:calc(var(--doc-header) + 24px);align-self:start}.toc li.toc-group{counter-increment:none;font-size:var(--fs-xs);font-weight:600;color:var(--muted);margin:var(--s3) 0 var(--s2);padding:0 8px}.toc li.toc-group:first-child{margin-top:0}.page:target .toc a.on{background:var(--accent-soft)}.content h2{display:block;font-size:var(--fs-xl);line-height:1.3;margin:0 0 var(--s3);font-weight:800;letter-spacing:-.015em}.content h2::before{content:none}.body-copy{font-size:var(--fs-md);line-height:1.75;color:var(--sub);margin:0 0 var(--s3);max-width:var(--measure)}.body-copy:last-child{margin-top:var(--s4);margin-bottom:0}.route{display:flex;flex-wrap:wrap;gap:8px 24px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 var(--s4);font-size:var(--fs-sm);line-height:1.75;color:var(--sub)}.route b{font-size:var(--fs-xs);font-weight:700;color:var(--ink);margin-right:10px}.example-layout{display:block;background:transparent;border:0;border-radius:0;padding:0}.example-text{min-width:0;max-width:var(--measure)}.example-screen{min-width:0;max-width:560px;margin-top:var(--s4)}.example-label{display:block;font-size:var(--fs-xs);color:var(--muted);margin-bottom:var(--s2)}.steps{display:block;counter-reset:none;margin:0;padding:0;list-style:none}.steps li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:var(--s3);padding:var(--s4) 0;border-bottom:1px dashed var(--line);scroll-margin-top:calc(var(--doc-header) + 60px)}.steps li:first-child{padding-top:var(--s2)}.steps li:last-child{border-bottom:0}.step-num{all:unset;align-self:start;font-weight:800;font-size:var(--fs-lg);line-height:1.45;color:var(--ink);width:max-content;font-variant-numeric:tabular-nums}.step-num::before{content:attr(data-num)}.steps strong{display:block;font-size:var(--fs-lg);line-height:1.45;font-weight:700;color:var(--ink)}.steps p{font-size:var(--fs-sm);line-height:1.75;color:var(--sub);margin:var(--s2) 0 0;max-width:var(--measure)}.screen{margin:var(--s3) 0 0;max-width:560px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}.screen:first-child{margin-top:0}.screen+.screen{margin-top:var(--s4)}.screen>summary{display:block;list-style:none;cursor:zoom-in}.screen>summary::-webkit-details-marker{display:none}.screen-thumb svg{display:block;width:100%;height:auto}.screen-caption{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s2);padding:var(--s2) 10px;border-top:1px solid var(--line);font-size:var(--fs-xs);line-height:1.75;color:var(--sub);background:var(--paper)}.screen-caption [data-figure]::before{content:"그림 " attr(data-figure) ". ";font-weight:700;color:var(--ink)}.screen-open,.screen-close{white-space:nowrap;color:var(--muted);font-size:var(--fs-xs);flex-shrink:0}.screen-close,.screen-large{display:none}.screen[open] .screen-thumb,.screen[open] .screen-open{display:none}.screen[open] .screen-close{display:inline}.screen[open] .screen-large{display:block;max-height:72svh;overflow:auto;overscroll-behavior:contain}.screen[open]>summary{cursor:pointer}.screen-large svg{display:block;width:100%;min-width:780px;height:auto}.full-screen{max-width:100%}.full-screen .screen-large svg{min-width:1280px}.device-switch{min-width:0}.device-radio{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.device-labels{display:flex;flex-wrap:wrap;gap:var(--s2);margin-bottom:var(--s3)}.device-labels label{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);padding:6px 12px;min-height:38px;font-size:var(--fs-sm);color:var(--sub);font-weight:600}.device-panel{display:none}.device-radio:focus-visible~.device-labels{outline:2px solid var(--ink);outline-offset:3px;border-radius:var(--r)}.note{margin-top:var(--s3);max-width:var(--measure)}.note p{font-size:var(--fs-sm);line-height:1.75;margin:0}.fine-print{font-size:var(--fs-xs);line-height:1.75;color:var(--muted);margin:var(--s3) 0 0;max-width:var(--measure)}.payment-note{border-top:1px solid var(--line);padding-top:var(--s3)}.feature-summary{display:block;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:var(--s3) 0;margin:0 0 var(--s4);max-width:var(--measure)}.feature-summary span{display:block;font-size:var(--fs-xs);font-weight:600;color:var(--muted);margin-bottom:var(--s1)}.feature-summary p{font-size:var(--fs-sm);color:var(--sub);margin:0}.function-prompt{font-size:var(--fs-sm);line-height:1.75;color:var(--sub);margin:0 0 var(--s4)}.feature{border:0;border-top:1px solid var(--line);border-radius:0;background:var(--paper);margin:0;padding:0;scroll-margin-top:calc(var(--doc-header) + 60px)}.feature:first-of-type{border-top:2px solid var(--ink)}.feature>summary{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);padding:var(--s3) 0;list-style:none;cursor:pointer}.feature>summary::-webkit-details-marker{display:none}.feature>summary strong{display:block;font-size:var(--fs-lg);line-height:1.45;font-weight:700}.feature>summary small{display:block;font-size:var(--fs-xs);line-height:1.75;color:var(--muted);margin-top:var(--s1)}.feature-indicator{width:20px;flex-shrink:0;font-weight:400;color:var(--muted);font-size:22px;text-align:center}.feature-indicator::before{content:"+"}.feature[open] .feature-indicator::before{content:"−"}.feature-body{padding:var(--s2) 0 var(--s5)}.state-meaning{border-top:1px solid var(--line);margin-top:var(--s4);padding-top:var(--s2)}.state-meaning p{display:grid;grid-template-columns:90px minmax(0,1fr);gap:var(--s3);padding:var(--s2) 0;margin:0;font-size:var(--fs-sm);line-height:1.75}.state-meaning b{font-weight:700}.state-meaning span{color:var(--sub)}.usage-flow{border-top:1px solid var(--line);padding-top:var(--s5);margin-top:var(--s5)}.usage-flow>div{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2)}.usage-flow a{padding:6px 12px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);font-size:var(--fs-sm);font-weight:600;text-decoration:none}.usage-flow a:hover{border-color:var(--ink);background:var(--accent-soft)}.usage-flow span{color:var(--muted)}.text-link{display:inline-block;padding:8px 0;min-height:40px;font-size:var(--fs-sm);font-weight:600}.next-guide{border-top:1px solid var(--line);padding-top:var(--s4);margin-top:var(--s5)}.next-guide p{font-size:var(--fs-sm);color:var(--sub);margin:0 0 var(--s3)}.page-actions{display:flex;flex-wrap:wrap;gap:var(--s2);border-top:1px solid var(--line);padding-top:var(--s4);margin-top:var(--s5)}.page-actions a{border:1px solid var(--line);border-radius:var(--r);padding:8px 14px;min-height:42px;font-size:var(--fs-sm);font-weight:600;text-decoration:none}.page-actions a:hover{background:var(--accent-soft);border-color:var(--ink)}.page-footer{font-size:var(--fs-xs);color:var(--muted);line-height:1.75;margin-top:var(--s4)}.menu-location{padding:0;border:0;border-radius:0;background:var(--paper)}.section-title{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);margin-bottom:var(--s2)}.section-title h2{margin:0}.device-chip{font-size:var(--fs-xs);font-weight:600;color:var(--sub);background:var(--tint);border:1px solid var(--line);border-radius:4px;padding:0 8px;line-height:24px}.single-line{font-size:var(--fs-sm);color:var(--sub);line-height:1.75;margin:0 0 var(--s3);max-width:var(--measure)}.single-line b{font-weight:600;color:var(--ink)}.thin-divider{height:1px;background:var(--line);margin:var(--s6) 0}.phone-example{max-width:390px}.role-cards{display:block;border-top:2px solid var(--ink)}.role-cards a{display:grid;grid-template-columns:140px minmax(0,1fr) 86px;align-items:baseline;gap:var(--s3);padding:var(--s3) 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}.role-cards a:hover{background:var(--tint)}.role-cards strong{font-size:var(--fs-md);font-weight:700}.role-cards span{font-size:var(--fs-sm);line-height:1.75;color:var(--sub)}.role-cards small{font-size:var(--fs-xs);font-weight:600;color:var(--sub);text-align:right}.contents-start{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin:0 0 var(--s5)}.contents-start a{display:flex;align-items:center;gap:var(--s2);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;min-height:48px;font-size:var(--fs-sm);font-weight:700;text-decoration:none}.contents-start a:hover{background:var(--tint);border-color:var(--ink)}.contents-start a span{font-size:var(--fs-xs);color:var(--muted)}.script-note{font-size:var(--fs-xs);color:var(--muted);margin-top:var(--s4)}.mobile-dock{display:none}
+@media(max-width:1180px) and (min-width:761px){.page.paper{margin-left:var(--s4);margin-right:var(--s4)}.page .body{grid-template-columns:190px minmax(0,1fr);padding:var(--s5);gap:var(--s5)}.page .page-head.cover{padding:var(--s5)}.role-cards a{grid-template-columns:115px minmax(0,1fr) 70px}.app-header .doc-name{font-size:14px}.search-area{width:270px}}
+@media(max-width:760px){:root{--doc-header:100px}.app-header.runhead{height:var(--doc-header);position:fixed}.app-header .header-inner{height:100%;display:flex;flex-wrap:wrap;padding:8px var(--s3) 10px;gap:8px}.brand{order:0}.brand-rizz{font-size:23px}.brand-glow{font-size:8px;margin-bottom:2px}.muaclass-logo{order:1;margin-left:auto;width:64px;height:31px}.app-header .bar,.app-header .doc-name{display:none}.search-area{order:2;width:100%;flex-basis:100%}.search .search-input-box input{font-size:16px}.search-results{position:fixed;top:calc(var(--doc-header) + 6px);left:var(--s3);right:var(--s3);max-height:45svh}.intro{padding:var(--doc-header) 0 var(--s5);min-height:100svh}.intro-inner.paper{border:0;border-radius:0;margin:0}.hero.cover{padding:var(--s4) var(--s3);display:block}.hero h1{font-size:28px;line-height:1.25;margin:var(--s3) 0 var(--s2)}.hero-copy{font-size:var(--fs-sm);line-height:1.75}.hero-actions{display:grid;gap:var(--s2);margin-top:var(--s4)}.hero-actions .button{width:100%;font-size:var(--fs-sm)}.page.paper{margin:var(--doc-header) 0 100px;max-width:none;border:0;border-radius:0;scroll-margin-top:var(--doc-header)}.page .page-head.cover{padding:var(--s4) var(--s3);display:block}.page-head h1{font-size:28px}.page-lead{font-size:var(--fs-sm);line-height:1.75}.page .body{grid-template-columns:minmax(0,1fr);padding:0 var(--s3) var(--s5);gap:0}.page .toc{position:sticky;top:var(--doc-header);z-index:10;margin:0 calc(-1 * var(--s3)) var(--s4);padding:var(--s2) var(--s3);background:var(--paper);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}.toc li.toc-group{display:none}.page .toc a{min-height:38px;align-items:center;padding:5px 8px;font-size:var(--fs-sm)}.page .content{max-width:none;width:100%}.content h2{font-size:var(--fs-xl)}.steps li{grid-template-columns:40px minmax(0,1fr);gap:var(--s2);padding:var(--s4) 0;scroll-margin-top:calc(var(--doc-header) + 64px)}.step-num{font-size:var(--fs-md);line-height:1.7}.steps strong{font-size:var(--fs-lg)}.steps p{font-size:var(--fs-sm)}.example-screen{max-width:100%;margin-top:var(--s4)}.screen{max-width:100%;border-radius:var(--r)}.screen-caption{font-size:var(--fs-xs);padding:var(--s2)}.screen-caption [data-figure]::before{display:block}.screen-large svg{min-width:700px}.full-screen .screen-large svg{min-width:1200px}.device-labels label{font-size:var(--fs-sm);min-height:40px}.note{padding:12px var(--s3)}.note p,.note b{font-size:var(--fs-sm)}.fine-print{font-size:var(--fs-xs)}.feature{scroll-margin-top:calc(var(--doc-header) + 64px)}.feature>summary strong{font-size:var(--fs-lg)}.feature>summary small{font-size:var(--fs-xs)}.feature-body{padding:var(--s2) 0 var(--s5)}.feature-summary{font-size:var(--fs-sm)}.state-meaning p{grid-template-columns:78px minmax(0,1fr);gap:var(--s2)}.next-guide .button{width:100%}.section-title h2{font-size:var(--fs-lg)}.thin-divider{margin:var(--s5) 0}.phone-example{max-width:390px;width:100%}.role-cards a{grid-template-columns:minmax(0,1fr) auto;gap:2px var(--s3)}.role-cards span{grid-column:1/-1;grid-row:2}.role-cards small{grid-column:2;grid-row:1}.contents-start{grid-template-columns:1fr}.page:target~.mobile-dock{display:grid;position:fixed;bottom:0;left:0;right:0;grid-template-columns:repeat(5,1fr);min-height:62px;padding:5px 5px max(6px,env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--line);z-index:40}.mobile-dock a{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;min-height:49px;padding:4px 3px;font-size:12px;font-weight:500;line-height:1.4;text-decoration:none;color:var(--muted);border-radius:var(--r)}.mobile-dock svg{width:18px;height:18px;stroke-width:1.8}.page-footer{font-size:var(--fs-xs)}}
+
+.device-labels label{cursor:pointer;touch-action:manipulation}
+.note p b{display:inline}
+.page{counter-reset:fig}
+.page .fig figcaption::before{content:"그림 " attr(data-n) "."}
+.content h2{margin-top:0}
+.note+.function-prompt{margin-top:var(--s4)}
+.feature .fig{max-width:560px}
+.page-actions a{color:var(--ink)}
+.copybox pre{white-space:pre-wrap;word-break:break-all}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:80}
+#first:target .toc a[href="#first"],#words:target .toc a[href="#words"],#home:target .toc a[href="#home"],#notice:target .toc a[href="#notice"],#resources:target .toc a[href="#resources"],#assignment:target .toc a[href="#assignment"],#submissions:target .toc a[href="#submissions"],#question:target .toc a[href="#question"],#schedule:target .toc a[href="#schedule"],#students:target .toc a[href="#students"],#request:target .toc a[href="#request"],#slack:target .toc a[href="#slack"],#faq:target .toc a[href="#faq"],#contents:target .toc a[href="#contents"]{background:var(--accent-soft);color:var(--ink);font-weight:700}
+#first:target~.mobile-dock a[href="#first"],#words:target~.mobile-dock a[href="#first"],#home:target~.mobile-dock a[href="#contents"],#notice:target~.mobile-dock a[href="#contents"],#resources:target~.mobile-dock a[href="#contents"],#assignment:target~.mobile-dock a[href="#assignment"],#submissions:target~.mobile-dock a[href="#submissions"],#question:target~.mobile-dock a[href="#contents"],#schedule:target~.mobile-dock a[href="#contents"],#students:target~.mobile-dock a[href="#contents"],#request:target~.mobile-dock a[href="#contents"],#slack:target~.mobile-dock a[href="#slack"],#faq:target~.mobile-dock a[href="#contents"],#contents:target~.mobile-dock a[href="#contents"]{background:var(--accent-soft);color:var(--ink);font-weight:700}
+</style>
+</head>
+<body>
+<div class="stage">
+<article class="page paper" id="first" aria-labelledby="title-first">
+<header class="page-head cover"><div class="breadcrumb">처음 이용하기</div><h1 id="title-first" data-doc-no="1">처음 쓰는 날 따라 하기</h1><p class="page-lead">처음에는 아래 다섯 단계만 따라 하시면 됩니다. 단계마다 "이렇게 되면 완료"를 확인해 주세요.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<a class="button outline small" href="https://rizz-coaching-production.up.railway.app/coach" target="_blank" rel="noopener noreferrer">코치 전용 페이지 열기</a>
+<ol class="steps">
+<li><span class="step-num" data-num="1.1" aria-hidden="true"></span><div><strong>페이지 열고 로그인하기</strong><p>아래 주소를 열고, 운영팀이 따로 전달드린 아이디(@로 시작)와 비밀번호를 넣은 뒤 "로그인"을 누릅니다.</p><div class="copybox"><div class="hd">코치 전용 페이지 주소<button type="button" class="cp">복사</button></div><pre>https://rizz-coaching-production.up.railway.app/coach</pre></div><aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>화면 맨 위에 "○○ 코치님, 반가워요"가 보입니다.</p></div></aside></div></li>
+<li><span class="step-num" data-num="1.2" aria-hidden="true"></span><div><strong>홈에서 이번 주 할 일 보기</strong><p>로그인하면 홈이 열립니다. 라이브, 이번 주 과제, 피드백 대기, 답변 대기 칸을 확인합니다. 보는 법은 <a href="#home">홈</a>에 있습니다.</p></div></li>
+<li><span class="step-num" data-num="1.3" aria-hidden="true"></span><div><strong>수강생 명단 확인하기</strong><p>왼쪽 메뉴 "수강생"을 눌러 수강생이 맞게 들어와 있는지 봅니다. 명단이 다르면 운영팀에 알려 주세요.</p></div></li>
+<li><span class="step-num" data-num="1.4" aria-hidden="true"></span><div><strong>첫 공지 올리기</strong><p>왼쪽 메뉴 "공지" → "공지 쓰기"로 수강생에게 인사 공지를 올려 봅니다. 쓰는 법은 <a href="#notice">공지</a>에 있습니다.</p><aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>공지 목록 맨 위에 방금 쓴 공지가 보입니다.</p></div></aside></div></li>
+<li><span class="step-num" data-num="1.5" aria-hidden="true"></span><div><strong>슬랙 앱 RIZZ Coach Desk 찾아 두기</strong><p>슬랙에서도 같은 일을 할 수 있습니다. 슬랙 앱 에이전트에서 "RIZZ Coach Desk"를 검색해 열어 둡니다. 쓰는 법은 <a href="#slack">슬랙에서 하기</a>에 있습니다.</p></div></li>
+</ol><nav class="page-actions"><a href="#words">다음: 먼저 알아 둘 말</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="words" aria-labelledby="title-words">
+<header class="page-head cover"><div class="breadcrumb">처음 이용하기</div><h1 id="title-words" data-doc-no="2">먼저 알아 둘 말</h1><p class="page-lead">이 가이드에 나오는 말의 뜻입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content"><div class="tblwrap"><table class="tbl"><caption>이 가이드에 나오는 말</caption><thead><tr><th>말</th><th>뜻</th></tr></thead><tbody><tr><td>주차</td><td>"11월 3주차"처럼 이번 달 몇째 주인지입니다. 과제는 주차별로 묶입니다.</td></tr><tr><td>임시 저장</td><td>코치님만 보이는 상태입니다. 수강생에게는 아직 안 보입니다.</td></tr><tr><td>공개</td><td>수강생 화면에 보이게 하는 것입니다. 과제와 자료는 "공개"를 눌러야 보입니다.</td></tr><tr><td>피드백 대기</td><td>수강생이 제출했는데 아직 피드백을 안 남긴 제출물 수입니다.</td></tr><tr><td>답변 대기</td><td>수강생이 남겼는데 아직 답하지 않은 질문 수입니다.</td></tr><tr><td>공지 / 운영팀 공지</td><td>"공지"는 코치님이 수강생에게 쓰는 글, "운영팀 공지"는 운영팀이 코치님께 보내는 글입니다.</td></tr><tr><td>다시보기</td><td>라이브 녹화본입니다. 코치님께 공개 동의를 받은 뒤 수강생에게 공개됩니다.</td></tr></tbody></table></div><nav class="page-actions"><a href="#first">이전: 처음 쓰는 날 따라 하기</a><a href="#home">다음: 홈</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="home" aria-labelledby="title-home">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-home" data-doc-no="3">홈</h1><p class="page-lead">이번 주에 챙기실 일을 한 화면에 모아 둔 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>로그인하면 처음 열리는 화면</span></div>
+<p class="body-copy">홈은 이번 주에 챙기실 일을 한 화면에 모아 둔 곳입니다. 빨간 번호는 누를 수 있는 곳입니다.</p>
+<figure class="fig"><img src="img01.jpg" alt="홈 화면 번호 표시"><figcaption data-n="3-1">① 새 운영팀 공지 ② 라이브 입장하기 ③ 과제로 가기 ④ 제출물로 가기 ⑤ 질문으로 가기</figcaption></figure>
+<div class="tblwrap"><table class="tbl"><caption>홈의 칸</caption><thead><tr><th>칸</th><th>보이는 것과 누르면 가는 곳</th></tr></thead><tbody><tr><td>맨 위 띠 ①</td><td>운영팀이 새 공지를 보내면 뜹니다. 누르면 운영팀 공지가 열립니다.</td></tr><tr><td>라이브 ②</td><td>이번 주 라이브와 시작 시각. 라이브 시간에 "라이브 입장하기"를 누릅니다.</td></tr><tr><td>이번 주 과제 ③</td><td>과제 이름, 마감, 제출한 수강생 수 (예: 1 / 2명 제출)</td></tr><tr><td>피드백 대기 ④</td><td>피드백을 기다리는 제출물 수와 목록</td></tr><tr><td>답변 대기 ⑤</td><td>답을 기다리는 질문 수와 목록</td></tr><tr><td>수강생별 현황</td><td>수강생마다 과제 제출 여부, 피드백·답변 대기 수, 최근 제출일</td></tr></tbody></table></div><nav class="page-actions"><a href="#words">이전: 먼저 알아 둘 말</a><a href="#notice">다음: 공지</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="notice" aria-labelledby="title-notice">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-notice" data-doc-no="4">공지</h1><p class="page-lead">수강생에게 안내나 질문 공지를 올리는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 공지</span></div>
+<h2>공지 쓰기</h2>
+<p class="body-copy">왼쪽 메뉴 "공지" → 오른쪽 위 "공지 쓰기"를 누릅니다. 종류를 고르고 제목과 내용을 적은 뒤 "저장"을 누릅니다.</p>
+<figure class="fig"><img src="img02.jpg" alt="공지 쓰기 창"><figcaption data-n="4-1">① 종류: "안내" 또는 "질문 (답글 받기)" ② 저장</figcaption></figure>
+<ul class="check"><li>알려 드릴 일만 있으면 "안내"</li><li>수강생 답을 받고 싶으면 "질문 (답글 받기)"</li></ul>
+<aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>공지 목록에 보이고, 저장하는 즉시 수강생 화면에도 보입니다. 고칠 때는 목록의 "고치기"를 누릅니다.</p></div></aside><nav class="page-actions"><a href="#home">이전: 홈</a><a href="#resources">다음: 자료</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="resources" aria-labelledby="title-resources">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-resources" data-doc-no="5">자료</h1><p class="page-lead">수강생에게 참고 자료를 올리는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 자료</span></div>
+<h2>자료 올리기</h2>
+<p class="body-copy">왼쪽 메뉴 "자료" → "자료 추가"를 누르고 자료 이름, 설명, 링크나 파일을 넣습니다.</p>
+<figure class="fig"><img src="img03.jpg" alt="자료 화면"><figcaption data-n="5-1">① 자료 추가</figcaption></figure>
+<ul class="check"><li>바로 보여 주려면 "저장하고 공개"</li><li>나중에 보여 주려면 "임시 저장"</li></ul>
+<aside class="note warn"><i aria-hidden="true"></i><div><b>주의</b><p>"임시 저장"한 자료는 수강생에게 보이지 않습니다.</p></div></aside><nav class="page-actions"><a href="#notice">이전: 공지</a><a href="#assignment">다음: 과제</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="assignment" aria-labelledby="title-assignment">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-assignment" data-doc-no="6">과제</h1><p class="page-lead">과제를 만들고 수강생에게 공개하는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 과제</span></div>
+<details class="feature" id="assignment-make" open><summary><span><strong>과제 내기</strong><small>새 과제 만들기 · 임시 저장 · 저장하고 공개</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">왼쪽 메뉴 "과제" → 오른쪽 위 "새 과제 만들기"를 누릅니다.</p>
+<figure class="fig"><img src="img04.jpg" alt="과제 목록"><figcaption data-n="6-1">① 새 과제 만들기 ② 임시 저장한 과제 공개하기 ③ 이 과제 제출물 보기</figcaption></figure>
+<p class="body-copy">창이 열리면 과제 제목, 마감, 가이드, 레퍼런스 링크, 제출 형식 안내, 첨부 파일을 넣습니다.</p>
+<figure class="fig"><img src="img05.jpg" alt="과제 추가 창"><figcaption data-n="6-2">① 임시 저장 (코치님만 보임) ② 저장하고 공개 (수강생에게 바로 보임)</figcaption></figure>
+<aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>과제 목록의 "진행 중"에 과제가 보이고, 홈의 "이번 주 과제"에 마감이 나옵니다.</p></div></aside></div></details>
+<details class="feature" id="assignment-open"><summary><span><strong>임시 저장한 과제 공개하기</strong><small>공개하기 · 공개 전 과제</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">과제 목록에서 "임시 저장" 표시가 있는 과제의 "공개하기"를 누릅니다.</p>
+<aside class="note warn"><i aria-hidden="true"></i><div><b>주의</b><p>홈에 "공개 전 과제"가 보이면 아직 수강생에게 안 보이는 과제가 있다는 뜻입니다.</p></div></aside></div></details><nav class="page-actions"><a href="#resources">이전: 자료</a><a href="#submissions">다음: 제출물</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="submissions" aria-labelledby="title-submissions">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-submissions" data-doc-no="7">제출물</h1><p class="page-lead">수강생이 낸 과제를 보고 피드백을 남기는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 제출물</span></div>
+<h2>제출물 보고 피드백 남기기</h2>
+<p class="body-copy">왼쪽 메뉴 "제출물"을 누르고 주차별이나 수강생별로 봅니다. 파일은 "받기"로 내려받고, 제출물 아래에 코치 피드백을 남깁니다.</p>
+<figure class="fig"><img src="img06.jpg" alt="제출물 화면"><figcaption data-n="7-1">① 주차별 보기 ② 수강생별 보기 ③ 파일 받기 ④ 남긴 피드백 고치기</figcaption></figure>
+<aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>과제 옆에 "모두 피드백함"이 보이고, 홈의 피드백 대기 숫자가 줄어듭니다.</p></div></aside><nav class="page-actions"><a href="#assignment">이전: 과제</a><a href="#question">다음: 질문</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="question" aria-labelledby="title-question">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-question" data-doc-no="8">질문</h1><p class="page-lead">수강생 질문에 답하는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 질문</span></div>
+<h2>질문에 답하기</h2>
+<p class="body-copy">왼쪽 메뉴 "질문" → "답변 대기"에서 질문을 보고, 답변 칸에 적은 뒤 "보내기"를 누릅니다.</p>
+<figure class="fig"><img src="img07.jpg" alt="질문 화면"><figcaption data-n="8-1">① 답변 대기 ② 답변 적는 칸 ③ 보내기</figcaption></figure>
+<aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>질문이 "답변 완료"로 옮겨지고 홈의 답변 대기 숫자가 줄어듭니다.</p></div></aside><nav class="page-actions"><a href="#submissions">이전: 제출물</a><a href="#schedule">다음: 일정·라이브</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="schedule" aria-labelledby="title-schedule">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-schedule" data-doc-no="9">일정·라이브</h1><p class="page-lead">일정을 보고 추가하며, 라이브에 들어가는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 일정</span></div>
+<details class="feature" id="schedule-add" open><summary><span><strong>일정 보기와 추가하기</strong><small>다가오는 일정 · 달력 · 일정 추가</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">왼쪽 메뉴 "일정"에서 다가오는 일정과 달력을 봅니다. 새 일정은 "일정 추가"를 누르고 분류(라이브, 기타 일정), 일정 이름, 날짜·시각을 넣어 저장합니다.</p>
+<figure class="fig"><img src="img08.jpg" alt="일정 화면"><figcaption data-n="9-1">① 일정 추가 ② 라이브 입장</figcaption></figure>
+<aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>저장하는 즉시 달력과 수강생 화면에 일정이 보입니다.</p></div></aside></div></details>
+<details class="feature" id="schedule-live"><summary><span><strong>라이브 입장하기</strong><small>라이브 입장하기 · Zoom 링크</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">라이브 시간에 홈이나 일정의 "라이브 입장하기"를 누르면 Zoom으로 들어갑니다. 라이브 링크는 운영팀이 넣어 드립니다.</p>
+<aside class="note warn"><i aria-hidden="true"></i><div><b>주의</b><p>"Zoom 링크 자동 생성 대기 중"이 보이면 아직 링크가 들어가기 전입니다. 라이브 직전까지 그대로면 슬랙의 "줌 링크 요청"(<a href="#slack">슬랙에서 하기</a>)이나 운영팀 문의로 알려 주세요.</p></div></aside></div></details>
+<details class="feature" id="schedule-replay"><summary><span><strong>다시보기 공개</strong><small>녹화본 공개 동의 · 슬랙 알림</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">라이브 녹화가 처리되면 운영팀이 코치님께 공개 동의를 여쭌 뒤 수강생에게 공개합니다. 다시보기 링크가 등록되면 슬랙 RIZZ Coach Desk가 개인 메시지로 알려 드립니다.</p></div></details><nav class="page-actions"><a href="#question">이전: 질문</a><a href="#students">다음: 수강생</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="students" aria-labelledby="title-students">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-students" data-doc-no="10">수강생</h1><p class="page-lead">수강생 명단과 과제 제출 현황을 보는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 수강생</span></div>
+<p class="body-copy">왼쪽 메뉴 "수강생"에서 현재 수강생 수, 평균 과제 제출률, 피드백·답변 대기 수와 수강생 명단(연락처 일부 가림, 권한 부여일, 과제 제출률)을 봅니다.</p>
+<figure class="fig"><img src="img09.jpg" alt="수강생 화면"><figcaption data-n="10-1">수강생 화면 (테스트 계정 예시)</figcaption></figure>
+<aside class="note warn"><i aria-hidden="true"></i><div><b>주의</b><p>화면 캡처를 다른 곳에 올리지 말아 주세요. 수강생 연락처가 포함됩니다.</p></div></aside><nav class="page-actions"><a href="#schedule">이전: 일정·라이브</a><a href="#request">다음: 운영팀 문의</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="request" aria-labelledby="title-request">
+<header class="page-head cover"><div class="breadcrumb">메뉴별 사용법</div><h1 id="title-request" data-doc-no="11">운영팀 문의</h1><p class="page-lead">대면피드백 같은 요청을 운영팀에 보내는 곳입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="route"><span><b>찾아가기</b>왼쪽 메뉴 → 운영팀 문의</span></div>
+<details class="feature" id="request-f2f" open><summary><span><strong>대면피드백 요청 보내기</strong><small>분류 · 날짜 · 원하는 수강생 · 요청 사유</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">왼쪽 메뉴 "운영팀 문의"에서 아래 순서로 적고 "운영팀에 보내기"를 누릅니다.</p>
+<figure class="fig"><img src="img10.jpg" alt="운영팀 문의 작성"><figcaption data-n="11-1">① 분류: 대면피드백 요청 ② 제목 ③ 가능하신 날짜 ④ 원하는 수강생 ⑤ 요청 사유 ⑥ 운영팀에 보내기</figcaption></figure>
+<aside class="note tip"><i aria-hidden="true"></i><div><b>이렇게 되면 완료</b><p>아래 "내 문의"에 방금 보낸 요청이 "처리 중"으로 보입니다.</p></div></aside></div></details>
+<details class="feature" id="request-status"><summary><span><strong>진행 상황 확인하기</strong><small>내 문의 · 처리 중 · 완료</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">운영팀이 수강생에게 가능한 시간을 여쭌 뒤 일정을 확정합니다. 확정되면 "내 문의"의 상태가 "완료"로 바뀌고, 확정 안내가 운영팀 공지로 옵니다.</p>
+<figure class="fig"><img src="img11.jpg" alt="내 문의"><figcaption data-n="11-2">① 분류 ② 운영팀에 보내기 ③ 운영팀 답변</figcaption></figure></div></details><nav class="page-actions"><a href="#students">이전: 수강생</a><a href="#slack">다음: RIZZ Coach Desk</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="slack" aria-labelledby="title-slack">
+<header class="page-head cover"><div class="breadcrumb">슬랙에서 하기</div><h1 id="title-slack" data-doc-no="12">슬랙에서 하기 (RIZZ Coach Desk)</h1><p class="page-lead">슬랙 앱 RIZZ Coach Desk에서도 코치 전용 페이지와 같은 일을 할 수 있습니다. 슬랙에서 저장한 내용은 코치 전용 페이지와 수강생 화면에 그대로 반영됩니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<aside class="note warn"><i aria-hidden="true"></i><div><b>먼저 알아 둘 점</b><p>과제와 자료는 저장한 뒤 "수강생에게 보여주기"를 눌러야 수강생에게 보입니다. 공지와 일정은 저장하는 즉시 보입니다. 문장으로 부탁해도 입력창에서 확인하고 저장해야 반영됩니다.</p></div></aside>
+<p class="function-prompt">필요한 일을 눌러 펼쳐 보세요.</p>
+<details class="feature" id="slack-open" open><summary><span><strong>RIZZ Coach Desk 열기</strong><small>앱 찾기 · 홈 탭 보는 법</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">슬랙 앱 에이전트에서 "RIZZ Coach Desk"를 검색해 엽니다. 맨 위 "홈" 탭에 담당 과정과 버튼이 보입니다.</p>
+<figure class="fig"><img src="img12.jpg" alt="RIZZ Coach Desk 홈"><figcaption data-n="12-1">① 담당 과정과 현황 (수강생 수, 답변·피드백 대기) ② 과제·공지·일정·자료 작성 버튼 ③ 대면피드백 요청 ④ 전체 수강생 명단 ⑤ 다가오는 일정과 줌 링크 요청</figcaption></figure>
+<aside class="note tip"><i aria-hidden="true"></i><div><b>팁</b><p>여러 과정을 맡고 계시면 홈에서 과정을 골라 그 과정만 작업합니다.</p></div></aside></div></details>
+<details class="feature" id="slack-assignment"><summary><span><strong>과제 만들고 공개하기</strong><small>과제 만들기 · 수강생에게 보여주기</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">홈의 "과제 만들기"를 누르고 제목, 내용, 파일을 넣어 저장합니다. 저장한 뒤 홈 목록에서 "수강생에게 보여주기"를 눌러야 수강생에게 보입니다.</p>
+<figure class="fig"><img src="img13.jpg" alt="슬랙 과제 만들기"><figcaption data-n="12-2">① 저장해도 아직 안 보임 ② 제목과 내용 ③ 첨부 파일 ④ 저장 (초안으로 저장)</figcaption></figure>
+<figure class="fig"><img src="img14.jpg" alt="슬랙 과제 공개"><figcaption data-n="12-3">① "수강생에게 안 보임" 표시 ② 수강생에게 보여주기 ③ 수정·삭제 (삭제는 확인창이 한 번 더 뜸)</figcaption></figure></div></details>
+<details class="feature" id="slack-notice"><summary><span><strong>공지 쓰기와 일정 추가</strong><small>공지 쓰기 · 일정 추가 · 저장하면 바로 표시</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">홈의 "공지 쓰기", "일정 추가"를 누르고 내용을 넣어 저장합니다. 저장하는 즉시 수강생에게 보입니다.</p>
+<figure class="fig"><img src="img15.jpg" alt="슬랙 공지 쓰기"><figcaption data-n="12-4">공지: ① 저장하면 바로 표시 ② 제목과 내용 ③ 저장</figcaption></figure>
+<figure class="fig"><img src="img16.jpg" alt="슬랙 일정 추가"><figcaption data-n="12-5">일정: ① 분류 (라이브, 기타 일정) ② 이름·날짜·시각 (서울 시간) ③ 안내(선택)·저장</figcaption></figure></div></details>
+<details class="feature" id="slack-resource"><summary><span><strong>자료 올리기</strong><small>자료 올리기 · 공개는 따로</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">홈의 "자료 올리기"에서 이름, 설명, 파일을 넣어 저장합니다. 과제처럼 "수강생에게 보여주기"를 따로 눌러야 보입니다.</p>
+<figure class="fig"><img src="img17.jpg" alt="슬랙 자료 올리기"><figcaption data-n="12-6">① 제목과 내용 ② 첨부 파일 ③ 저장 (공개는 홈에서 따로)</figcaption></figure></div></details>
+<details class="feature" id="slack-answer"><summary><span><strong>질문 답하고 제출물에 피드백하기</strong><small>답변 남기기 · 파일 보기 · 피드백 남기기</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">홈의 "답변 대기"에서 "답변 남기기", 제출물 목록에서 "파일 보기"와 "피드백 남기기"를 누릅니다. 파일은 RIZZ Coach Desk 개인 대화로 사본이 옵니다.</p>
+<figure class="fig"><img src="img18.jpg" alt="슬랙 질문 답변"><figcaption data-n="12-7">질문: ① 답변 내용 ② 저장</figcaption></figure>
+<figure class="fig"><img src="img19.jpg" alt="슬랙 제출물 목록"><figcaption data-n="12-8">제출물: ① 누가 어떤 과제에 어떤 파일을 냈는지 ② 파일 보기 ③ 피드백 남기기</figcaption></figure>
+<figure class="fig"><img src="img20.jpg" alt="슬랙 피드백 작성"><figcaption data-n="12-9">피드백: ① 대상 수강생·과제 확인 ② 피드백 내용 ③ 저장</figcaption></figure></div></details>
+<details class="feature" id="slack-request"><summary><span><strong>대면피드백·줌 링크 요청하기</strong><small>대면피드백 요청 · 줌 링크 요청</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">홈의 "대면피드백 요청"에서 가능한 날짜, 원하는 수강생, 요청 사유를 넣어 운영팀에 보냅니다. 라이브 링크가 없으면 홈 아래 다가오는 일정에서 "줌 링크 요청"을 누릅니다.</p>
+<figure class="fig"><img src="img21.jpg" alt="슬랙 대면피드백 요청"><figcaption data-n="12-10">① 가능한 날짜 ② 원하는 수강생 ③ 요청 사유 ④ 운영팀에 전달</figcaption></figure></div></details>
+<details class="feature" id="slack-message"><summary><span><strong>메시지로 묻고 부탁하기</strong><small>메시지 탭 · 문장으로 물어보기</small></span><span class="feature-indicator" aria-hidden="true"></span></summary><div class="feature-body">
+<p class="body-copy">RIZZ Coach Desk "메시지" 탭에 문장으로 물어보거나 부탁할 수 있습니다. 담당 과정만 알려 드립니다.</p>
+<div class="copybox"><div class="hd">이렇게 물어보세요<button type="button" class="cp">복사</button></div><pre>현황 알려줘
+수강생 몇 명이야?
+피드백 대기 몇 건이야?
+다음 일정 알려줘
+다음 주 화요일 오후 8시 라이브 잡아줘</pre></div>
+<figure class="fig"><img src="img22.jpg" alt="문장으로 작업 요청"><figcaption data-n="12-11">① 부탁하기 ② 작업 버튼 (이 단계에서는 저장되지 않음)</figcaption></figure>
+<figure class="fig"><img src="img23.jpg" alt="AI가 채운 일정 확인"><figcaption data-n="12-12">① 분류와 이름 ② 날짜·시각 ③ 안내 ④ 저장 (코치님이 눌러야 생김)</figcaption></figure></div></details><nav class="page-actions"><a href="#request">이전: 운영팀 문의</a><a href="#faq">다음: 자주 묻는 질문</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper" id="faq" aria-labelledby="title-faq">
+<header class="page-head cover"><div class="breadcrumb">도움말</div><h1 id="title-faq" data-doc-no="13">자주 묻는 질문</h1><p class="page-lead">코치님들이 자주 물어보시는 내용입니다.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<div class="faq">
+<details open><summary>로그인이 되지 않습니다.</summary><p>아이디가 "@"로 시작하는지 확인해 주세요. 그래도 안 되면 코치님 슬랙 채널로 알려 주시면 비밀번호를 새로 발급해 드립니다.</p></details>
+<details><summary>과제를 만들었는데 수강생이 못 본다고 합니다.</summary><p>임시 저장 상태일 수 있습니다. 페이지에서는 과제 목록의 "공개하기", 슬랙에서는 "수강생에게 보여주기"를 눌러 주세요.</p></details>
+<details><summary>라이브 입장 버튼이 눌리지 않습니다.</summary><p>운영팀이 링크를 넣기 전일 수 있습니다. 슬랙 RIZZ Coach Desk의 "줌 링크 요청"을 눌러 주세요.</p></details>
+<details><summary>페이지와 슬랙 중 어디서 해야 하나요?</summary><p>어느 쪽에서 해도 같은 곳에 저장됩니다. 편한 곳을 쓰시면 됩니다.</p></details>
+<details><summary>다시보기는 언제 수강생에게 보이나요?</summary><p>녹화 처리가 끝나면 운영팀이 코치님께 공개 동의를 여쭌 뒤 공개합니다.</p></details>
+</div><nav class="page-actions"><a href="#slack">이전: RIZZ Coach Desk</a><a href="#contents">전체 메뉴</a><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer></main></div></article>
+<article class="page paper contents-page" id="contents" aria-labelledby="title-contents">
+<header class="page-head cover"><div class="breadcrumb">가이드 목차</div><h1 id="title-contents">어떤 기능이 궁금하세요?</h1><p class="page-lead">처음이라면 처음 쓰는 날 따라 하기부터, 그다음은 필요한 메뉴를 골라 주세요.</p></header>
+<div class="body"><nav class="toc" aria-label="가이드 목차"><div class="t">목차</div><ol><li class="toc-group">처음 이용하기</li><li><a href="#first">처음 쓰는 날 따라 하기</a></li><li><a href="#words">먼저 알아 둘 말</a></li><li class="toc-group">메뉴별 사용법</li><li><a href="#home">홈</a></li><li><a href="#notice">공지</a></li><li><a href="#resources">자료</a></li><li><a href="#assignment">과제</a></li><li><a href="#submissions">제출물</a></li><li><a href="#question">질문</a></li><li><a href="#schedule">일정·라이브</a></li><li><a href="#students">수강생</a></li><li><a href="#request">운영팀 문의</a></li><li class="toc-group">슬랙에서 하기</li><li><a href="#slack">RIZZ Coach Desk</a></li><li class="toc-group">도움말</li><li><a href="#faq">자주 묻는 질문</a></li></ol></nav><main class="content">
+<h2>처음 이용하기</h2><div class="contents-start"><a href="#first"><span>01</span>처음 쓰는 날 따라 하기</a><a href="#words"><span>02</span>먼저 알아 둘 말</a></div>
+<h2>메뉴별 사용법</h2><div class="role-cards"><a href="#home"><strong>홈</strong><span>이번 주에 챙기실 일을 한 화면에 모아 둔 곳</span><small>사용법 보기</small></a><a href="#notice"><strong>공지</strong><span>수강생에게 안내나 질문 공지를 올리는 곳</span><small>사용법 보기</small></a><a href="#resources"><strong>자료</strong><span>수강생에게 참고 자료를 올리는 곳</span><small>사용법 보기</small></a><a href="#assignment"><strong>과제</strong><span>과제를 만들고 수강생에게 공개하는 곳</span><small>사용법 보기</small></a><a href="#submissions"><strong>제출물</strong><span>수강생이 낸 과제를 보고 피드백을 남기는 곳</span><small>사용법 보기</small></a><a href="#question"><strong>질문</strong><span>수강생 질문에 답하는 곳</span><small>사용법 보기</small></a><a href="#schedule"><strong>일정·라이브</strong><span>일정을 보고 추가하며, 라이브에 들어가는 곳</span><small>사용법 보기</small></a><a href="#students"><strong>수강생</strong><span>수강생 명단과 과제 제출 현황을 보는 곳</span><small>사용법 보기</small></a><a href="#request"><strong>운영팀 문의</strong><span>대면피드백 같은 요청을 운영팀에 보내는 곳</span><small>사용법 보기</small></a></div>
+<h2 style="margin-top:32px">슬랙과 도움말</h2><div class="role-cards"><a href="#slack"><strong>RIZZ Coach Desk</strong><span>슬랙 앱에서 같은 일을 하는 방법</span><small>사용법 보기</small></a><a href="#faq"><strong>자주 묻는 질문</strong><span>로그인, 과제 공개, 라이브 입장, 다시보기</span><small>사용법 보기</small></a></div>
+<nav class="page-actions"><a href="#intro">처음 화면</a></nav><footer class="page-footer">화면은 테스트 계정 예시입니다. 실제 과제명·수강생 수는 코치님마다 다를 수 있습니다.</footer>
+</main></div></article>
+<section class="intro" id="intro" aria-labelledby="intro-title"><div class="intro-inner paper"><div class="hero cover">
+<p class="program-name kind">RIZZ 육성프로그램</p>
+<h1 id="intro-title" aria-label="코치프로그램 코치 전용 페이지">코치프로그램<br>코치 전용 페이지</h1>
+<p class="hero-copy">공지·과제부터 피드백, 운영팀 요청까지<br>코치 전용 페이지의 모든 사용법을 한눈에.</p>
+<div class="hero-actions"><a href="#first" class="button primary">매뉴얼 보러가기</a><a class="button" href="https://rizz-coaching-production.up.railway.app/coach" target="_blank" rel="noopener noreferrer">코치 전용 페이지 열기</a></div>
+</div></div></section>
+<header class="app-header runhead"><div class="header-inner in">
+<a class="brand" href="#intro" aria-label="Glow up RIZZ 처음 화면"><span class="brand-glow">Glow up</span><span class="brand-rizz">RIZZ</span></a>
+<span class="bar" aria-hidden="true"></span><span class="doc-name">코치 전용 페이지 사용 안내</span>
+<div class="search-area search">
+<a class="search-fallback" href="#contents" aria-label="궁금한 내용 찾기, 목차 열기"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg><span>궁금한 내용 찾기</span></a>
+<div class="search-enhanced" role="search"><div class="search-input-box"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+<input id="manual-search" type="search" placeholder="궁금한 내용 검색" aria-label="가이드 검색" autocomplete="off" aria-controls="search-results" aria-expanded="false"><button class="search-clear" id="search-clear" type="button" aria-label="검색어 지우기">지우기</button></div>
+<div class="search-results" id="search-results" hidden><p class="search-results-label" id="search-results-label">자주 찾는 안내</p><div id="search-matches"></div><a href="#contents" class="search-all">전체 메뉴에서 찾아보기</a></div></div></div>
+<img class="muaclass-logo" src="img24.png" alt="무아클래스"></div></header>
+<nav class="mobile-dock" aria-label="가이드 빠른 메뉴"><a href="#first"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h6v14H4zM10 5h10v14H10M7 8h0"></path></svg><span>처음 쓰는 날</span></a><a href="#assignment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6zM9 8h6M9 12h6M9 16h4"></path></svg><span>과제</span></a><a href="#submissions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM8 11l3 3 5-6"></path></svg><span>제출물</span></a><a href="#slack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4v16M16 4v16M4 8h16M4 16h16"></path></svg><span>슬랙</span></a><a href="#contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><span>전체 메뉴</span></a></nav>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>(function(){'use strict';
+var $=function(s,el){return [].slice.call((el||document).querySelectorAll(s))};
+var toast=document.getElementById('toast'),tt;function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},1600)}
+function copy(text,done){(navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(done,function(){var a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();done()})}
+$('.copybox').forEach(function(b){var btn=b.querySelector('.cp'),pre=b.querySelector('pre');if(btn&&pre)btn.onclick=function(){copy(pre.innerText,function(){btn.textContent='복사됨';btn.classList.add('ok');setTimeout(function(){btn.textContent='복사';btn.classList.remove('ok')},1500)})}});
+$('.check li').forEach(function(li){li.setAttribute('role','checkbox');li.setAttribute('tabindex','0');li.setAttribute('aria-checked','false');var t=function(){var d=li.classList.toggle('done');li.setAttribute('aria-checked',d)};li.onclick=t;li.onkeydown=function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();t()}}});
+$('.tbl').forEach(function(t){var hs=$('thead th',t).map(function(h){return h.textContent});$('tbody tr',t).forEach(function(r){$('td',r).forEach(function(td,i){td.setAttribute('data-label',hs[i]||'')})})});
+function tocFocus(){var id=location.hash.slice(1),a=document.getElementById(id);if(!a||!a.classList.contains('page'))return;var l=a.querySelector('.toc a[href="#'+id+'"]'),tc=a.querySelector('.toc');if(l&&tc&&innerWidth<=760){tc.scrollLeft=l.offsetLeft-(tc.clientWidth-l.offsetWidth)/2}}
+window.addEventListener('hashchange',tocFocus);tocFocus();
+try{
+var data=[];
+$('article.page').forEach(function(a){if(a.id==='contents')return;var h=a.querySelector('h1').textContent,lead=(a.querySelector('.page-lead')||{}).textContent||'';data.push({page:a.id,title:h,desc:lead,text:(a.querySelector('.content')||a).textContent});
+ $('.feature',a).forEach(function(f){data.push({page:a.id,detail:f.id,title:h+' · '+f.querySelector('summary strong').textContent,desc:f.querySelector('summary small').textContent,text:f.textContent})})});
+var input=document.getElementById('manual-search'),panel=document.getElementById('search-results'),matches=document.getElementById('search-matches'),label=document.getElementById('search-results-label'),clear=document.getElementById('search-clear'),box=document.querySelector('.search-input-box');
+var popular=['first','assignment-make','submissions','schedule-live','request-f2f','slack-open'];
+function normal(s){return s.toLowerCase().replace(/[^a-z0-9가-힣]/g,'')}
+function hide(){panel.hidden=true;input.setAttribute('aria-expanded','false')}
+function go(r){location.hash=r.page;setTimeout(function(){if(r.detail){var d=document.getElementById(r.detail);if(d){d.open=true;d.scrollIntoView({block:'start'})}}else window.scrollTo(0,0)},30)}
+function paint(){var q=input.value.trim(),terms=q.split(/\s+/).map(normal).filter(Boolean);
+ var list=q?data.filter(function(r){var hay=normal(r.title+' '+r.desc+' '+r.text);return terms.every(function(t){return hay.indexOf(t)>=0})}):data.filter(function(r){return popular.indexOf(r.detail||r.page)>=0&&!(r.detail==null&&['assignment','request','schedule','slack'].indexOf(r.page)>=0)});
+ if(q){var score=function(r){var tl=normal(r.title),ds=normal(r.desc);return (r.detail?2:0)+terms.reduce(function(n,t){return n+(tl.indexOf(t)>=0?8:0)+(ds.indexOf(t)>=0?3:0)},0)};list.sort(function(a,b){return score(b)-score(a)});list=list.slice(0,8)}
+ matches.textContent='';label.textContent=q?'검색 결과 '+list.length+'개':'자주 찾는 안내';box.classList.toggle('has-value',!!q);
+ if(!list.length){var e=document.createElement('div');e.className='search-empty';e.textContent='찾는 내용이 없어요. 다른 단어로 찾아보시거나 전체 메뉴에서 골라 주세요.';matches.append(e)}
+ list.forEach(function(r){var a=document.createElement('a');a.className='search-result';a.href='#'+r.page;var b=document.createElement('b'),s=document.createElement('small');b.textContent=r.title;s.textContent=r.desc;a.append(b,s);a.addEventListener('click',function(ev){ev.preventDefault();hide();input.blur();go(r)});matches.append(a)});
+ panel.hidden=false;input.setAttribute('aria-expanded','true')}
+input.addEventListener('focus',paint);input.addEventListener('input',paint);
+input.addEventListener('keydown',function(e){if(e.key==='Escape'){hide();input.blur()}else if(e.key==='Enter'){e.preventDefault();var f=matches.querySelector('a');if(f)f.click()}});
+clear.addEventListener('click',function(){input.value='';input.focus();paint()});
+document.addEventListener('click',function(e){if(!e.target.closest('.search-area'))hide()});
+var names={"first":"처음 쓰는 날 따라 하기","words":"먼저 알아 둘 말","home":"홈","notice":"공지","resources":"자료","assignment":"과제","submissions":"제출물","question":"질문","schedule":"일정·라이브","students":"수강생","request":"운영팀 문의","slack":"RIZZ Coach Desk","faq":"자주 묻는 질문"};
+function setTitle(){var id=location.hash.slice(1);document.title=names[id]?'코치 전용 페이지 사용 안내 | '+names[id]:'RIZZ 육성프로그램 | 코치 전용 페이지 사용 안내'}
+window.addEventListener('hashchange',function(){hide();setTitle();window.scrollTo(0,0)});setTitle();
+function fit(){input.placeholder=innerWidth<360?'내용 검색':'궁금한 내용 검색'}fit();window.addEventListener('resize',fit);
+document.documentElement.classList.add('search-ready');
+}catch(err){document.documentElement.classList.remove('search-ready')}
+})();</script>
+</body>
+</html>
